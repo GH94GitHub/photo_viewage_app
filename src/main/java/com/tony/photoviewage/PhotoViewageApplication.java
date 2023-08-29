@@ -17,4 +17,9 @@ public class PhotoViewageApplication {
 	public String hello() {
 		return "Hello from PhotoViewage";
 	}
+	
+	@GetMapping("image/")
+	public String imagesDefault() {
+		return "Images directory";
+	}
 }
