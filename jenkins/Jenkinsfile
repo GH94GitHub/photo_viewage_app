@@ -1,0 +1,49 @@
+pipeline {
+  stages {
+    stage("Clean Up") {
+      steps {
+        removeDir()
+      }
+    }
+    stage("Clone") {
+      steps {
+        bat "git clone https://github.com/GH94GitHub/photo_viewage_app.git"
+      }
+    }
+    stage("Clean") {
+      steps {
+        dir("photo_viewage_app") {
+          bat "mvn clean"
+        }
+      }
+    }
+    stage("Package") {
+      steps {
+        dir("photo_viewage_app") {
+          bat "mvn package"
+        }
+      }
+    }
+    stage("Test") {
+      steps {
+        dir("photo_viewage_app") {
+          bat "mvn test"
+        }
+      }
+    }
+    // stage("build") {
+    //   steps {
+    //     dir("photo_viewage_app") {
+    //       bat "mvn build"
+    //     }
+    //   }
+    // }
+    // stage("Deploy") {
+    //   steps {
+    //     dir("photo_viewage_app") {
+    //       bat "mvn deploy"
+    //     }
+    //   }
+    // }
+  }
+}
