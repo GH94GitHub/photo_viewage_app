@@ -33,14 +33,14 @@ pipeline {
     }
     stage("Move Config") {
       steps {
-        dir(${appName}) {
+        dir("${appName}") {
          	sh "cp ${prop} ."
         }
       }
     }
     stage("Deploy") {
        steps {
-         dir(${appPath}) {
+         dir("${appPath}") {
          	sh "nohup java -jar PhotoViewage.jar -Dpropfile=application.properties &"
            echo "done"
          }
