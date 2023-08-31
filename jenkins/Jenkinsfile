@@ -14,20 +14,21 @@ pipeline {
     stage("Clean") {
       steps {
         dir("photo_viewage_app") {
-          sh "mvn clean"
+          sh "./mvnw clean"
         }
       }
     }
     stage("Package") {
       steps {
         dir("photo_viewage_app") {
-          sh "mvn install"
+          sh "./mvnw install"
         }
       }
     }
     stage("Deploy") {
        steps {
          dir("photo_viewage_app/target") {
+         	sh "pwd"
            echo "done"
          }
        }
