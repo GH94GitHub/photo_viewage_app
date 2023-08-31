@@ -30,7 +30,7 @@ pipeline {
        steps {
          dir("photo_viewage_app/target") {
          	sh "pwd"
-         	sh "ll"
+         	sh "ls -al"
            echo "done"
          }
        }
