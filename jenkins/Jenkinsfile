@@ -34,7 +34,7 @@ pipeline {
     stage("Move Config") {
       steps {
         dir("${appName}") {
-         	sh "cp ${prop} ."
+         	sh "cp ${prop} ./application.properties"
         }
       }
     }
