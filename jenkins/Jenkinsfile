@@ -1,6 +1,6 @@
 def appName = "photo_viewage_app"
 def appPath = appName + "/target"
-def prop = "~/application.properties"
+def prop = "~/PhotoViewage.properties"
 
 
 pipeline {
