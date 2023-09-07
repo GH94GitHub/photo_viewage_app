@@ -39,7 +39,7 @@ pipeline {
     }
     stage("Deploy") {
        steps {
-         sh "sudo /home/ec2-user/photoviewage/restart_photoviewage.sh"
+         sh "sudo systemctl restart photoviewage"
        }
      }
   }
