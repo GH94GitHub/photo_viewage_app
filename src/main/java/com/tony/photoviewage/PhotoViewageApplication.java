@@ -15,7 +15,7 @@ public class PhotoViewageApplication {
 
 	@GetMapping()
 	public String hello() {
-		return "Hello from PhotoViewage";
+		return "(:(:(:(: Updated :):):):)";
 	}
 	
 	@GetMapping("image")
