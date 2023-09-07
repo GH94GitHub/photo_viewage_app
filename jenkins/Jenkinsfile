@@ -1,6 +1,6 @@
-def appName = "photo_viewage_app"
-def appPath = appName + "/target"
-def prop = "~/application.properties"
+def srcRoot = "photo_viewage_app"
+def appPath = srcRoot + "/target"
+def origPropPath = "/home/ec2-user/application.properties"
 
 
 pipeline {
@@ -18,32 +18,29 @@ pipeline {
     }
     stage("Clean") {
       steps {
-        dir("photo_viewage_app") {
-        	sh "chmod u+x ./mvnw"
+        dir("${srcRoot}") {
+          sh "chmod u+x ./mvnw"
           sh "./mvnw clean"
         }
       }
     }
     stage("Install") {
       steps {
-        dir("photo_viewage_app") {
+        dir("${srcRoot}") {
           sh "./mvnw install -DskipTests"
         }
       }
     }
     stage("Move Config") {
       steps {
-        dir("${appName}") {
-         	sh "cp ${prop} ."
+        dir("${appPath}") {
+         	sh "cp ${origPropPath} ."
         }
       }
     }
     stage("Deploy") {
        steps {
-         dir("${appPath}") {
-         	sh "nohup java -jar PhotoViewage.jar -Dpropfile=application.properties &"
-           echo "done"
-         }
+         sh "systemctl restart photoviewage"
        }
      }
   }
