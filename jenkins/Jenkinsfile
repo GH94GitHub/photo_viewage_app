@@ -2,7 +2,6 @@ def srcRoot = "photo_viewage_app"
 def appPath = srcRoot + "/target"
 def origPropPath = "/home/ec2-user/application.properties"
 
-
 pipeline {
   agent any
   stages {
