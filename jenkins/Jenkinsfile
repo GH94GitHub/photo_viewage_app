@@ -39,7 +39,7 @@ pipeline {
     }
     stage("Deploy") {
        steps {
-         sh "systemctl restart photoviewage"
+         sh "sudo systemctl restart photoviewage"
        }
      }
   }
